@@ -40,6 +40,7 @@ function getProjectById(id) {
             .where({ project_id: id })
             .then(actions => {
               console.log(actions);
+              console.log(`--------------`, project);
               return {
                 project,
                 actions
