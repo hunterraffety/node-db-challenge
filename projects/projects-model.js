@@ -6,7 +6,7 @@ module.exports = {
   getProjects
 };
 
-function addProject(post) {
+function addProject(project) {
   //
 }
 
