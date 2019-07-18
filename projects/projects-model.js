@@ -43,7 +43,7 @@ function getProjectById(id) {
               console.log(`--------------`, project);
               return {
                 project,
-                actions
+                ...actions
               };
             })
         );
@@ -59,4 +59,5 @@ function getProjects() {
 
 function getActionsByProjectId(id) {
   return db('actions').where({ project_id: id });
+  // returns an array of actions for a given project.
 }

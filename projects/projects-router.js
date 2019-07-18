@@ -15,12 +15,14 @@ router.get('/', async (req, res) => {
   }
 });
 
+// ... what is happening? :/
 router.get('/:id', async (req, res) => {
   const { id } = req.params;
   // const actions = await Projects.getActionsByProjectId(id);
   console.log(id);
   try {
     const project = await Projects.getProjectById(id);
+    console.log(project);
     if (project) {
       res.json(project);
     } else {
