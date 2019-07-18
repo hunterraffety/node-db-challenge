@@ -1,7 +1,19 @@
 const db = require('../data/db-config');
 
 module.exports = {
-  addPost,
+  addProject,
   addAction,
-  get
+  getProjects
 };
+
+function addProject(post) {
+  //
+}
+
+function addAction(action) {
+  //
+}
+
+function getProjects() {
+  //
+}
