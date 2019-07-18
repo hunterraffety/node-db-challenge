@@ -15,5 +15,5 @@ function addAction(action) {
 }
 
 function getProjects() {
-  //
+  return db('projects');
 }
