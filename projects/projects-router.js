@@ -33,6 +33,16 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+router.get('/:id/actions', async (req, res) => {
+  const { id } = req.params;
+  const actions = await Projects.getActionsByProjectId(id);
+  try {
+    res.status(200).json(actions);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
 router.post('/', async (req, res) => {
   const project = req.body;
   if (Object.keys(project).length === 0) {
