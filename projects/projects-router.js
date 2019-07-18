@@ -17,11 +17,12 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
   const { id } = req.params;
+  const actions = await Projects.getActionsByProjectId(id);
   console.log(id);
   try {
     const project = await Projects.getProjectById(id);
     if (project) {
-      res.json(project);
+      res.json(project, actions);
     } else {
       res
         .status(404)

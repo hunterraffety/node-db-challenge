@@ -4,7 +4,8 @@ module.exports = {
   addProject,
   addAction,
   getProjects,
-  getProjectById
+  getProjectById,
+  getActionsByProjectId
 };
 
 function addProject(project) {
@@ -53,4 +54,8 @@ function getProjectById(id) {
 
 function getProjects() {
   return db('projects');
+}
+
+function getActionsByProjectId(id) {
+  return db('actions').where({ project_id: id });
 }
