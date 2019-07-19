@@ -36,6 +36,36 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+router.delete('/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const deleted = await Projects.deleteProject(id);
+    if (deleted) {
+      res.status(200).json({ message: 'Deleted.' });
+    } else {
+      res.status(404).json({ message: 'No ID like that son' });
+    }
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+router.put('/:id', async (req, res) => {
+  const { id } = req.params;
+  const update = req.body;
+  try {
+    const project = await Projects.getProjectById(id);
+    if (project) {
+      const updatedProject = await Projects.updateProject(update, id);
+      res.status(200).json({ message: `Updated project ${id}` });
+    } else {
+      res.status(404).json({ message: 'No ID like that son' });
+    }
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
 router.get('/:id/actions', async (req, res) => {
   const { id } = req.params;
   const actions = await Projects.getActionsByProjectId(id);
