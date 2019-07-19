@@ -38,13 +38,16 @@ function getProjectById(id) {
           db('actions')
             // find the id, son.
             .where({ project_id: id })
+            .select(
+              'id',
+              'action_notes',
+              'action_description',
+              'action_completed'
+            )
             .then(actions => {
-              console.log(actions);
-              console.log(`--------------`, project);
-              return {
-                project,
-                ...actions
-              };
+              // console.log(actions);
+              // console.log(`--------------`, project);
+              return { ...project, actions };
             })
         );
       } else {
